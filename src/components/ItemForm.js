@@ -1,11 +1,39 @@
 import React, { useState } from "react";
 
-function ItemForm() {
+function ItemForm({ onAddItem }) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
 
+  // Add to List button
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("name", name);
+    // console.log("category", category);
+
+    const itemData = {
+      name: name,
+      category: category,
+      isInCart: false,
+    };
+    console.log(itemData) //=> {name: 'Ice Cream', category: 'Dessert', isInCart: false}
+
+    // Fetch POST request
+      // When X event occurs - user submits the ItemForm
+      // Make Y fetch request - passing the form data in the body of the request
+      // Update Z state - send the item to ShoppingList component
+    fetch('http://localhost:4000/items', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(itemData)
+    })
+    .then(resp => resp.json())
+    .then(newItem => onAddItem(newItem))
+  }
+
   return (
-    <form className="NewItem">
+    <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
         <input

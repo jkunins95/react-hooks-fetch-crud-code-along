@@ -35,6 +35,30 @@
       "name": "Cookies",
       "category": "Dessert",
       "isInCart": false
+    },
+    {
+      "name": "Ice Cream",
+      "category": "Dessert",
+      "isInCart": false,
+      "id": 7
+    },
+    {
+      "name": "Ice Cream",
+      "category": "Dessert",
+      "isInCart": false,
+      "id": 8
+    },
+    {
+      "name": "Ice Cream",
+      "category": "Dessert",
+      "isInCart": false,
+      "id": 9
+    },
+    {
+      "name": "Ice Cream",
+      "category": "Dessert",
+      "isInCart": false,
+      "id": 10
     }
   ]
 }
