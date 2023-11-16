@@ -1,6 +1,6 @@
 import React from "react";
 
-function Item({ item, onUpdateItem }) {
+function Item({ item, onUpdateItem, onDeleteItem }) {
   function handleAddToCartClick() {
     // console.log("clicked item:", item);
 
@@ -29,7 +29,8 @@ function Item({ item, onUpdateItem }) {
       method: "DELETE",
     })
     .then(resp => resp.json())
-    .then(() => console.log("deleted"));
+    // .then(() => console.log("deleted"));
+    .then(() => onDeleteItem(item));
   }
 
   return (
