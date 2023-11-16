@@ -25,6 +25,21 @@ function ShoppingList() {
     setItems([...items, newItem])
   }
 
+  // This function adds the item to the Cart
+  function handleUpdateItem(updatedItem) {
+    // console.log("In ShoppingCart:", updatedItem)
+
+    // call setState with a new array that replaces one item with the new updated item from the server
+    const updatedItems = items.map((item) => {
+      if (item.id === updatedItem.id) {
+        return updatedItem;
+      } else {
+        return item;
+      }
+    });
+    setItems(updatedItems)
+  }
+
   function handleCategoryChange(category) {
     setSelectedCategory(category);
   }
@@ -44,7 +59,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} />
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem} />
         ))}
       </ul>
     </div>
